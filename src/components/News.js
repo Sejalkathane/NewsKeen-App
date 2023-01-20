@@ -7,49 +7,48 @@ export class News extends Component {
         super();
         console.log('Hello i am const from news component ');
         this.state = {
-            articles:[],
-            loading: false
+            articles: [],
+            loading: false,
+            page:1
         }
     }
 
 
-   async componentDidMount(){
-       let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=1&pageSize=20";
-       let data =await fetch(url);
-       let parsedata = await data.json();
-       this.setState({articles: parsedata.articles,totalArticles:parsedata.totalResults})
+    async componentDidMount() {
+        let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=1&pageSize=21";
+        let data = await fetch(url);
+        let parsedata = await data.json();
+        this.setState({ articles: parsedata.articles, totalArticles: parsedata.totalResults })
     }
 
-    handlePrevClick= async()=>{
+    handlePrevClick = async () => {
         console.log('Previous');
-        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page-1}&pageSize=20`;
-        let data =await fetch(url);
+        let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page - 1}&pageSize=21`;
+        let data = await fetch(url);
         let parsedata = await data.json();
-    
+
 
         this.setState({
-            page: this.state.page-1,
+            page: this.state.page - 1,
             articles: parsedata.articles
-          })
+        })
     }
 
-    handleNextClick= async()=>{
+    handleNextClick = async () =>
+     {
+        if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
 
-    if(this.state.page+1>Math.cell(this.state.totalResults/20))
-    {
+        }
+        else {
+            let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page + 1}&pageSize=21`;
+            let data = await fetch(url);
+            let parsedata = await data.json();
 
-     }
-     else
-         {let url=`https://newsapi.org/v2/top-hea{dlines?country=us&category=business&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page+1}&pageSize=20`;
-        let data =await fetch(url);
-        let parsedata = await data.json();
-      
-
-      this.setState({
-        page: this.state.page+1,
-        articles: parsedata.articles
-      })
-    }
+            this.setState({
+                page: this.state.page + 1,
+                articles: parsedata.articles
+            })
+        }
     }
 
 
@@ -67,8 +66,8 @@ export class News extends Component {
                 </div>
 
                 <div className="container d-flex justify-content-between" >
-                <button disabled={this.state.page<=1} type="button" className="btn btn-dark" onClick={this.handlePrevClick}>&larr; Previous </button>
-                <button type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
+                    <button disabled={this.state.page <= 1} type="button" className="btn btn-dark" onClick={this.handlePrevClick}>&larr; Previous </button>
+                    <button type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
                 </div>
             </div>
         );
