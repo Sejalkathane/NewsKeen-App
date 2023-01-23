@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import { Spinner } from "./Spinner";
 import PropTypes from "prop-types";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export class News extends Component {
   static defaultProps = {
@@ -24,6 +25,7 @@ export class News extends Component {
       articles: [],
       loading: false,
       page: 1,
+      totalResults:0
     };
     document.title = `${this.capitalizeFirstLetter(
       this.props.category
@@ -31,15 +33,19 @@ export class News extends Component {
   }
 
   async updateNews() {
+       this.props.setProgress(10);
+
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page}&pageSize=9`;
     this.setState({ loading: true });
     let data = await fetch(url);
+    this.props.setProgress(40);
     let parsedata = await data.json();
     this.setState({
       articles: parsedata.articles,
       totalArticles: parsedata.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
@@ -54,43 +60,65 @@ export class News extends Component {
     this.updateNews();
   }
 
-  handlePrevClick = async () => {
-    // console.log('Previous');
-    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page - 1}&pageSize=9`;
-    // this.setState({ loading: true });
-    // let data = await fetch(url);
-    // let parsedata = await data.json();
+  // handlePrevClick = async () => {
+  //   // console.log('Previous');
+  //   // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page - 1}&pageSize=9`;
+  //   // this.setState({ loading: true });
+  //   // let data = await fetch(url);
+  //   // let parsedata = await data.json();
 
-    // this.setState({
-    //     page: this.state.page - 1,
-    //     articles: parsedata.articles,
-    //     loading: false
-    // })
+  //   // this.setState({
+  //   //     page: this.state.page - 1,
+  //   //     articles: parsedata.articles,
+  //   //     loading: false
+  //   // })
 
-    this.setState({ page: this.state.page - 1 });
-    this.updateNews();
+  //   this.setState({ page: this.state.page - 1 });
+  //   this.updateNews();
+  // };
+
+
+
+
+  // handleNextClick = async () => {
+  //   // if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
+
+  //   // }
+  //   // else {
+  //   //     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page + 1}&pageSize=9`;
+  //   //     this.setState({ loading: true });
+  //   //     let data = await fetch(url);
+  //   //     let parsedata = await data.json();
+
+  //   //     this.setState({
+  //   //         page: this.state.page + 1,
+  //   //         articles: parsedata.articles,
+  //   //         loading: false
+  //   //     })
+  //   // }
+
+  //   this.setState({ page: this.state.page + 1 });
+  //   this.updateNews();
+  // };
+
+
+
+
+   fetchMoreData=async () => {
+  this.setState({page:this.state.page+1});
+  const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page}&pageSize=9`;
+  this.setState({ loading: true });
+  let data = await fetch(url);
+  let parsedata = await data.json();
+  this.setState({
+    articles:this.state.articles.concat( parsedata.articles),
+    totalArticles: parsedata.totalResults,
+    loading: false,
+  });
   };
 
-  handleNextClick = async () => {
-    // if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
 
-    // }
-    // else {
-    //     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=928f2c1b016f4b068d53200a9f33b4fa&page=${this.state.page + 1}&pageSize=9`;
-    //     this.setState({ loading: true });
-    //     let data = await fetch(url);
-    //     let parsedata = await data.json();
 
-    //     this.setState({
-    //         page: this.state.page + 1,
-    //         articles: parsedata.articles,
-    //         loading: false
-    //     })
-    // }
-
-    this.setState({ page: this.state.page + 1 });
-    this.updateNews();
-  };
 
   render() {
     return (
@@ -99,11 +127,19 @@ export class News extends Component {
           News Keen Top {this.capitalizeFirstLetter(this.props.category)}{" "}
           Headline
         </h1>
-        {this.state.loading && <Spinner />}
+        {/* {this.state.loading && <Spinner />} */}
 
-        <div className="row">
-          {!this.state.loading &&
-            this.state.articles.map((element) => {
+        {/* infinite scroll */}
+        <InfiniteScroll
+          dataLength={this.state.articles.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.articles.length !== this.state.totalResults}
+          loader={<Spinner/>}
+        >
+          <div className="container">
+          <div className="row">
+            {/* {!this.state.loading && */}
+            {this.state.articles.map((element) => {
               return (
                 <div className="col-md-4" key={element.url}>
                   <NewsItem
@@ -122,9 +158,11 @@ export class News extends Component {
                 </div>
               );
             })}
-        </div>
+          </div>
+          </div>
+        </InfiniteScroll>
 
-        <div className="container d-flex justify-content-between">
+        {/* <div className="container d-flex justify-content-between">
           <button
             disabled={this.state.page <= 1}
             type="button"
@@ -144,7 +182,7 @@ export class News extends Component {
           >
             Next &rarr;
           </button>
-        </div>
+        </div> */}
       </div>
     );
   }
