@@ -44,7 +44,7 @@ const News =(props)=> {
   useEffect(()=>
   {
     updateNews();
-  },)
+  })
   
 
 
