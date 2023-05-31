@@ -1,13 +1,11 @@
-import React from "react";
-
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-const NavBar=()=> 
-{
-
+export class NavBar extends Component {
+  render() {
     return (
       <div>
-        <nav className="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark ">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               News Keen
@@ -70,14 +68,14 @@ const NavBar=()=>
                 </li>
               </ul>
 
-              <div className="form-check form-switch">
+              <div class="form-check form-switch">
                 <input
-                  className="form-check-input"
+                  class="form-check-input"
                   type="checkbox"
                   role="switch"
                   id="flexSwitchCheckDefault"
                 />
-                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">
                   Default switch checkbox input
                 </label>
               </div>
@@ -87,6 +85,6 @@ const NavBar=()=>
       </div>
     );
   }
-
+}
 
 export default NavBar;
