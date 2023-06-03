@@ -6,21 +6,21 @@ export class NewsItem extends Component {
       this.props;
     return (
       <div className="my-3">
-        <div className="card" style={{ width: "18rem" }}>
-          <img
+        <div className="card main-one-card" style={{ width: "18rem" }}>
+          <img 
             src={
               !imageUrl
                 ? "https://media.istockphoto.com/id/1181901573/vector/latest-news-isolated-icon-megaphone-or-bullhorn-breaking-report-vector-info-announcement-and.jpg?s=612x612&w=0&k=20&c=-nJ0115sP5-80iihi09TzKptTL4YJcoP2uVtaYt7oZg="
                 : imageUrl
             }
-            className="card-img-top"
+            className="card-img-top card-img"
             alt="..."
           />
           <div className="card-body">
             <h5 className="card-title">
               {title}...
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                {source}
+              <span class="top-name position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+               {source}
               </span>
             </h5>
             <p className="card-text">{description}...</p>

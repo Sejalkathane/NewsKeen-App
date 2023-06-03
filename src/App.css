@@ -39,7 +39,7 @@
 
 
 .container-fluid{
-  background-image:linear-gradient(rgb(255, 83, 123),rgb(206, 206, 206));
+  background-image:linear-gradient(rgb(255, 125, 155),rgb(206, 206, 206));
   border-radius: 25px;
   box-shadow: 2px 5px rgb(149, 148, 148);
   position:relative;
@@ -104,7 +104,7 @@
   font-size: 50px;
   padding: 10px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  /* background-image: radial-gradient(rgb(255, 255, 255),rgb(228, 228, 228)); */
+  background-image: radial-gradient(rgb(251, 251, 251),rgb(255, 188, 188));
   width: 1000px;
   margin-left: 200px;
   border-radius: 40px;
@@ -117,11 +117,15 @@
 
 /* for card  */
 
+
 .container-main
 {
   background-image:url("/public/bd6.png");
   /* width: 1800px; */
-  margin-left: 0px;
+  /* margin-left: 0px */
+  padding: 30px;
+  margin-left: 30px;
+
   
 
 }
@@ -132,7 +136,8 @@
 .my-3 .card
 {
   /* background-color: yellow; */
-  margin-left: 50px;
+  /* margin-left: 10px; */
+  padding: 5px;
   height: 500px;
   /* box-shadow: 7px 7px 7px 7px rgb(0, 0, 0);  */
   /* box-shadow: 5px 5px 10px 10px rgb(255, 153, 153), 6px 6px 11px 11px rgb(255, 0, 0);  */
@@ -144,12 +149,15 @@
   border: 2px solid black;
   margin-bottom: 100px;
 
-   
-}
-.my-3:hover{
-   
-}
 
+   
+}
+.my-3 .card img
+{
+  border-radius: 20px;
+  height: 200px;
+  
+}
 .my-3 .card .card-title
 {
   font-size: 22px;
@@ -183,4 +191,32 @@
   background-color: red;
   box-shadow: inset 2px 2px 2px 2px rgb(255, 176, 176);
   border: 1px solid rgb(0, 0, 0);
+}
+.top-name{
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  box-shadow: 1px 1px 2px 2px rgb(0, 0, 0);
+}
+
+
+
+.main-one-card{
+transition: transform 0.2s ease;
+background-color: #eddeff;
+}
+.main-one-card:hover{
+  transform: scale(1.1);
+ 
+}
+.card-img{
+  min-height:100px;
+}
+.card-img:hover{
+  transition: transform 0.2s ease;
+   transform:scale(1.2)
+}
+
+body{
+  /* background-image: url(/public/bd5.jpeg); */
+
 }
