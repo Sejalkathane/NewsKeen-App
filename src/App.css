@@ -39,7 +39,8 @@
 
 
 .container-fluid{
-  background-image:linear-gradient(rgb(255, 125, 155),rgb(206, 206, 206));
+  /* background-image:linear-gradient(rgb(255, 168, 187),rgb(206, 206, 206)); */
+  background-image: url(/public/bd4.jpg);
   border-radius: 25px;
   box-shadow: 2px 5px rgb(149, 148, 148);
   position:relative;
@@ -75,9 +76,9 @@
   font-weight: bold;
   color:rgb(0, 0, 0);
   text-shadow: 1px 1px rgb(255, 91, 91);
-  background-color: rgb(255, 223, 223);
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  /* box-shadow: 2px 2px #ffffff; */
+  box-shadow: 1px 1px 2px 2px #ff2121;
 }
 
 .nav-item:hover{
@@ -104,7 +105,9 @@
   font-size: 50px;
   padding: 10px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background-image: radial-gradient(rgb(251, 251, 251),rgb(255, 188, 188));
+  /* background-image: radial-gradient(rgb(251, 251, 251),rgb(255, 223, 223)); */
+  /* border: 1px solid black; */
+  text-decoration: underline 2px rgb(0, 0, 0);
   width: 1000px;
   margin-left: 200px;
   border-radius: 40px;
@@ -120,15 +123,18 @@
 
 .container-main
 {
-  background-image:url("/public/bd6.png");
-  /* width: 1800px; */
-  /* margin-left: 0px */
+  background-image:url("/public/bd7.png");
+  /* background-color: rgb(255, 203, 219); */
+  width: 1250px;
+  /* margin-left: 0px; */
   padding: 30px;
   margin-left: 30px;
-
-  
-
+  /* background-size: cover; */
+  background-size: no-repeat;
 }
+
+
+
 .card img{
   height: 170px;
 }
@@ -142,11 +148,13 @@
   /* box-shadow: 7px 7px 7px 7px rgb(0, 0, 0);  */
   /* box-shadow: 5px 5px 10px 10px rgb(255, 153, 153), 6px 6px 11px 11px rgb(255, 0, 0);  */
   
-  box-shadow: 5px 5px 10px 10px rgb(255, 165, 180); 
+  box-shadow: 2px 2px 15px 15px rgb(255, 198, 198); 
   font-size: 17px;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
   border-radius: 20px;
-  border: 2px solid black;
+  border: 3px solid rgb(0, 0, 0);
+  border-bottom: 10px solid #000000;
+  border-left: 4px solid #000000;
   margin-bottom: 100px;
 
 
@@ -202,21 +210,24 @@
 
 .main-one-card{
 transition: transform 0.2s ease;
-background-color: #eddeff;
+background-color: #ffffe4;
 }
 .main-one-card:hover{
   transform: scale(1.1);
- 
+  box-shadow:inset 2px 2px 15px 15px rgb(255, 208, 208);
+  background-color: white;
+  border:3px solid red;
+  border-bottom:10px solid red;
 }
 .card-img{
   min-height:100px;
 }
+
 .card-img:hover{
   transition: transform 0.2s ease;
-   transform:scale(1.2)
+  transform:scale(1.2)
 }
 
 body{
-  /* background-image: url(/public/bd5.jpeg); */
-
+  background-image: url();
 }

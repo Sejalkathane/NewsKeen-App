@@ -185,6 +185,7 @@ export class News extends Component {
         </div> */}
       </div>
     );
+
   }
 }
 
