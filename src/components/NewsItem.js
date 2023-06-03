@@ -10,7 +10,7 @@ export class NewsItem extends Component {
           <img
             src={
               !imageUrl
-                ? "https://profootballtalk.nbcsports.com/wp-content/uploads/sites/25/2023/01/GettyImages-1246245000-e1673777141311.jpg"
+                ? "https://media.istockphoto.com/id/1181901573/vector/latest-news-isolated-icon-megaphone-or-bullhorn-breaking-report-vector-info-announcement-and.jpg?s=612x612&w=0&k=20&c=-nJ0115sP5-80iihi09TzKptTL4YJcoP2uVtaYt7oZg="
                 : imageUrl
             }
             className="card-img-top"
@@ -30,7 +30,7 @@ export class NewsItem extends Component {
                 {new Date(date).toGMTString()}
               </small>
             </p>
-            <a href={newsUrl} target="blank" className="btn btn-sm btn-dark ">
+            <a href={newsUrl} target="blank" className="btn1">
               Read More
             </a>
           </div>

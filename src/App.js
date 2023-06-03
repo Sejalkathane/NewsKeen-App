@@ -44,7 +44,7 @@ export default class App extends Component {
             <Route
               exact
               path="/"
-              element={<News setProgress={this.setProgress} key="general " country="in" csategory="general" />}
+              element={<News setProgress={this.setProgress} key="general " country="in" category="general" />}
             ></Route>
             <Route
               exact

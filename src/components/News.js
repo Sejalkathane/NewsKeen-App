@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
-import { Spinner }from "./Spinner";
+import {Spinner }from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -136,7 +136,7 @@ export class News extends Component {
           hasMore={this.state.articles.length !== this.state.totalResults}
           loader={<Spinner/>}
         >
-          <div className="container">
+          <div className="container-main">
           <div className="row">
             {/* {!this.state.loading && */}
             {this.state.articles.map((element) => {

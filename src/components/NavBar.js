@@ -68,7 +68,7 @@ export class NavBar extends Component {
                 </li>
               </ul>
 
-              <div class="form-check form-switch">
+              {/* <div class="form-check form-switch">
                 <input
                   class="form-check-input"
                   type="checkbox"
@@ -78,7 +78,8 @@ export class NavBar extends Component {
                 <label class="form-check-label" for="flexSwitchCheckDefault">
                   Default switch checkbox input
                 </label>
-              </div>
+              </div> */}
+              
             </div>
           </div>
         </nav>
